@@ -78,9 +78,9 @@ void Game::play(std::string first, std::string last)
         m_partialLadders.push_back(ladder);
         while(!m_partialLadders.empty())
         {
-            ladder = m_partialLadders[0];
+            ladder = m_partialLadders.front();
             current = ladder.back();
-            m_partialLadders.erase(m_partialLadders.begin());
+            m_partialLadders.pop_front();
             
             if(current == last)
             {

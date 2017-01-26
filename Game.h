@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <deque>
 
 class Game{
     public:
@@ -22,8 +23,8 @@ class Game{
     
     private:
     std::vector<std::string> m_dictionary;
+    std::deque<std::vector<std::string>> m_partialLadders;
     std::vector<std::string> m_generatedWords;
-    std::vector<std::vector<std::string>> m_partialLadders;
     std::vector<std::string> m_wordsPossible;
     
 
