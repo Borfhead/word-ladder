@@ -17,12 +17,14 @@ class Game{
     int getNumWordsInDictionary();
     void printLadder(std::vector<std::string> &toPrint);
     std::string getInDic(int index);
+    void genWordsPossible(int wordLength);
     
     
     private:
     std::vector<std::string> m_dictionary;
     std::vector<std::string> m_generatedWords;
     std::vector<std::vector<std::string>> m_partialLadders;
+    std::vector<std::string> m_wordsPossible;
     
 
 };

@@ -27,7 +27,6 @@ Game::Game(std::string dictionary)
     }
     file.close();
     
-    std::sort(m_dictionary.begin(), m_dictionary.end());
     
     
 }
@@ -57,20 +56,21 @@ void Game::play(std::string first, std::string last)
     m_partialLadders.clear();
     if(first.length() != last.length())
     {
-        std::cout << "Words are not the same length!" << std::endl;
+        std::cout << first << " and " << last << " are not the same length!" << std::endl;
     }
     
-    if(!findWord(first))
+    else if(!findWord(first))
     {
         std::cout << first << " not found in dictionary" << std::endl;
     }
-    if(!findWord(last))
+    else if(!findWord(last))
     {
         std::cout << last << " not found in dictionary" << std::endl;
     }
     
     else
     {
+        genWordsPossible(first.length());
         std::vector<std::string> ladder;
         std::string current;
         m_generatedWords.push_back(first);
@@ -159,7 +159,7 @@ bool Game::isOneLetterOff(std::string base, std::string test)
 std::vector<std::string> Game::getAllCloseWords(std::string first)
 {
     std::vector<std::string> rtnVector;
-    for(auto word : m_dictionary)
+    for(auto word : m_wordsPossible)
         {
             if(isOneLetterOff(first, word))
             {
@@ -195,6 +195,17 @@ std::string Game::getInDic(int index)
     return m_dictionary[index];
 }
 
+void Game::genWordsPossible(int wordLength)
+{
+    m_wordsPossible.clear();
+    for(auto word : m_dictionary)
+    {
+        if(word.length() == wordLength)
+        {
+            m_wordsPossible.push_back(word);
+        }
+    }
+}
 
 
 
